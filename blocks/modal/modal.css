@@ -1,0 +1,23 @@
+@import url(../modal/__title/modal__title.css);
+@import url(../modal/__name/modal__name.css);
+@import url(../modal/__occupation/modal__occupation.css);
+@import url(../modal/__btn/modal__btn.css);
+@import url(../modal/__container/modal__container.css);
+@import url(../modal/__close/modal__close.css);
+
+
+.modal {
+    width: 430px;
+    height: 330px;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 34px 36px 37px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}

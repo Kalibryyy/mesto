@@ -1,0 +1,6 @@
+@import url(../header/__line/header__line.css);
+
+.header {
+  margin: 0 auto;
+  max-width: 882px;
+}
