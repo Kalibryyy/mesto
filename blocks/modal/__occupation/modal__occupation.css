@@ -1,6 +1,16 @@
 .modal__occupation {
     font-size: 14px;
     line-height: 1.2;
-    color: #000000;
     margin-bottom: 48px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    font-family: inherit;
 }
+
+.modal__occupation:focus {
+    outline-color: grey;
+}
+
+
+

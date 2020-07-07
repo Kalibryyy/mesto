@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
+  <link rel="stylesheet" href="vendor/normalize.css">
   <link rel="stylesheet" href="pages/index.css">
 </head>
 
@@ -16,43 +17,58 @@
   <main class="content">
     <section class="profile">
       <div class="profile__info">
-        <img src="./images/profile-avatar.png" alt="аватар" class="profile__avatar">
+        <img src="./images/profile-avatar.jpg" alt="аватар" class="profile__avatar">
         <div class="profile__datas">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <div class="profile__edit-button"></div>
-          <p class="profile__occupation">Исследователь океана</p>
+          <h1 class="profile__name">Елена Стрижакова</h1>
+          <div class="profile__edit-button hover"></div>
+          <p class="profile__occupation">Начинающий веб-разработчик и опытный моряк-путешественник</p>
         </div>
-        
+
       </div>
-      <div class="profile__add-button"></div>
+      <div class="profile__add-button hover"></div>
     </section>
 
     <section class="elements">
       <ul class="elements__list">
         <li class="elements__item">
-          <img src="./images/element-karachaevsk.png" alt="" class="elements__image">
-          <p class="elements__text">Карачаевск</p>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element-karachaevsk.png" alt="" class="elements__image">
-          <p class="elements__text">Карачаевск</p>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element-karachaevsk.png" alt="" class="elements__image">
-          <p class="elements__text">Карачаевск</p>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element-karachaevsk.png" alt="" class="elements__image">
-          <p class="elements__text">Карачаевск</p>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element-karachaevsk.png" alt="" class="elements__image">
-          <p class="elements__text">Карачаевск</p>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element-karachaevsk.png" alt="" class="elements__image">
+          <img src="./images/element-french-polynesia.JPG" alt="Французская Полинезия" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">Карачаевск</p>
+            <p class="elements__text">Французская Полинезия</p>
+            <div class="elements__like"></div>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element-portugal.JPG" alt="Португалия" class="elements__image">
+          <div class="elements__footer">
+            <p class="elements__text">Португалия</p>
+            <div class="elements__like"></div>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element-italy.JPG" alt="Италия" class="elements__image">
+          <div class="elements__footer">
+            <p class="elements__text">Италия</p>
+            <div class="elements__like"></div>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element-germany.JPG" alt="Германия" class="elements__image">
+          <div class="elements__footer">
+            <p class="elements__text">Германия</p>
+            <div class="elements__like"></div>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element-bermuda.JPG" alt="Бермудские острова" class="elements__image">
+          <div class="elements__footer">
+            <p class="elements__text">Бермудские острова</p>
+            <div class="elements__like"></div>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element-usa.JPG" alt="США" class="elements__image">
+          <div class="elements__footer">
+            <p class="elements__text">США</p>
             <div class="elements__like"></div>
           </div>
         </li>
@@ -60,20 +76,23 @@
     </section>
   </main>
   <footer class="footer">
-    <p class="copyright">© 2020 Mesto Russia</p>
+    <p class="footer__copyright">© 2020. Елена Стрижакова</p>
   </footer>
-  <section class="modal">
-  <form class="modal__container">
-    <h2 class="modal__title">Редактировать профиль</h2>
-      <input type="text" placeholder="Жак-Ив Кусто" class="modal__name">
-      <input type="text" placeholder="Исследователь океана" class="modal__occupation">
-      <button class="modal__btn">
+  <div class="modal">
+  <div class="modal__overlay"></div>
+    <form class="modal__container">
+      <img src="./images/close-icon.svg" alt="" class="modal__close hover">
+      <h2 class="modal__title">Редактировать профиль</h2>
+      <input type="text" class="modal__name" name="name" value="Жак-Ив Кусто" required> 
+      <input type="text" class="modal__occupation" name="occupation" value="Исследователь океана">
+      <button type="submit" class="modal__btn">
         Сохранить
       </button>
-    </form>
-    <img src="./images/close-icon.svg" alt="" class="modal__close">
-  </section>
-  <script src="./script.js"></script>
+    </form> 
+  </div>
+  
+
+  <script src="./index.js"></script>
 </body>
 
 </html>

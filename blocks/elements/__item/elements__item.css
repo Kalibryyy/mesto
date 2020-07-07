@@ -5,4 +5,11 @@
   min-height: 361px;
   max-height: 100%;
   object-fit: cover;
+  
+}
+
+@media screen and (max-width: 425px) {
+  .elements__item {
+    margin: 0 auto;
+  }
 }

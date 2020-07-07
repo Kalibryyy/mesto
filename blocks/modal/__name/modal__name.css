@@ -1,9 +1,15 @@
 .modal__name {
     font-size: 14px;
     line-height: 1.2;
-    color: #000000;
     border: 0;
-    border-bottom: 1px solid #000000;
-    opacity: 0.2;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
+    display: block;
+    width: 100%;
+    font-family: inherit;
 }
+
+.modal__name:focus {
+    outline-color: grey;
+}
+
