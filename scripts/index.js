@@ -12,6 +12,7 @@ editButton.addEventListener('click', toggleModal);
 modalClose.addEventListener('click', toggleModal);
 
 const formElement = document.querySelector('.modal__container');
+const modalBtn = document.querySelector('.modal__btn');
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
 
@@ -23,8 +24,10 @@ function formSubmitHandler (evt) {
 
     nameProfile.textContent =  nameInput.value;
     jobProfile.textContent = jobInput.value;// Вставьте новые значения с помощью textContent
+    
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
+modalBtn.addEventListener('click', toggleModal);
