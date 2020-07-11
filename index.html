@@ -5,27 +5,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="vendor/normalize.css">
   <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="page">
   <header class="header">
     <div class="logo"></div>
-    <div class="header__line"></div>
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__info">
         <img src="./images/profile-avatar.jpg" alt="аватар" class="profile__avatar">
-        <div class="profile__datas">
-          <h1 class="profile__name">Елена Стрижакова</h1>
-          <div class="profile__edit-button hover"></div>
-          <p class="profile__occupation">Начинающий веб-разработчик и опытный моряк-путешественник</p>
+        <div class="profile__data">
+          <div class="profile__wrap">
+            <h1 class="profile__name">Елена Стрижакова</h1>
+            <button class="profile__edit-button hover" type="button"></button>
+          </div>
+          <p class="profile__occupation">Начинающий веб-разработчик и&nbsp;опытный моряк-путешественник</p>
         </div>
-
       </div>
-      <div class="profile__add-button hover"></div>
+      <button class="profile__add-button hover">+</button>
     </section>
 
     <section class="elements">
@@ -33,43 +32,43 @@
         <li class="elements__item">
           <img src="./images/element-french-polynesia.JPG" alt="Французская Полинезия" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">Французская Полинезия</p>
-            <div class="elements__like"></div>
+            <h2 class="elements__text">Французская Полинезия</h2>
+            <button class="elements__like" type="button"></button>
           </div>
         </li>
         <li class="elements__item">
           <img src="./images/element-portugal.JPG" alt="Португалия" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">Португалия</p>
-            <div class="elements__like"></div>
+            <h2 class="elements__text">Португалия</h2>
+            <button class="elements__like" type="button"></button>
           </div>
         </li>
         <li class="elements__item">
           <img src="./images/element-italy.JPG" alt="Италия" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">Италия</p>
-            <div class="elements__like"></div>
+            <h2 class="elements__text">Италия</h2>
+            <button class="elements__like" type="button"></button>
           </div>
         </li>
         <li class="elements__item">
           <img src="./images/element-germany.JPG" alt="Германия" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">Германия</p>
-            <div class="elements__like"></div>
+            <h2 class="elements__text">Германия</h2>
+            <button class="elements__like" type="button"></button>
           </div>
         </li>
         <li class="elements__item">
           <img src="./images/element-bermuda.JPG" alt="Бермудские острова" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">Бермудские острова</p>
-            <div class="elements__like"></div>
+            <h2 class="elements__text">Бермудские острова</h2>
+            <button class="elements__like" type="button"></button>
           </div>
         </li>
         <li class="elements__item">
           <img src="./images/element-usa.JPG" alt="США" class="elements__image">
           <div class="elements__footer">
-            <p class="elements__text">США</p>
-            <div class="elements__like"></div>
+            <h2 class="elements__text">США</h2>
+            <button class="elements__like" type="button"></button>
           </div>
         </li>
       </ul>
@@ -79,20 +78,21 @@
     <p class="footer__copyright">© 2020. Елена Стрижакова</p>
   </footer>
   <div class="modal">
-  <div class="modal__overlay"></div>
+    <div class="modal__overlay"></div>
     <form class="modal__container">
-      <img src="./images/close-icon.svg" alt="" class="modal__close hover">
+      <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
       <h2 class="modal__title">Редактировать профиль</h2>
-      <input type="text" class="modal__name" name="name" value="Жак-Ив Кусто" required> 
-      <input type="text" class="modal__occupation" name="occupation" value="Исследователь океана">
+      <input type="text" class="modal__name" name="name" value="Елена Стрижакова" required>
+      <input type="text" class="modal__occupation" name="occupation"
+        value="Начинающий веб-разработчик и опытный моряк-путешественник">
       <button type="submit" class="modal__btn">
         Сохранить
       </button>
-    </form> 
+    </form>
   </div>
-  
 
-  <script src="./index.js"></script>
+
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

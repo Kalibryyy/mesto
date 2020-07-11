@@ -1,6 +1,6 @@
-@import url(../header/__line/header__line.css);
-
 .header {
   margin: 0 auto;
   max-width: 882px;
+  border-bottom: 1px solid #545454;
+  padding-bottom: 41px;
 }

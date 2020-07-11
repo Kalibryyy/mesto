@@ -1,0 +1,23 @@
+.profile__data {
+  max-width: 550px;
+}
+
+@media screen and (max-width: 1245px) {
+  .profile__data {
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profile__data {
+    margin-right: 0;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__data {
+    margin-right: 0;
+    max-width: 282px;
+  }
+}
