@@ -8,11 +8,14 @@
   color: #FFFFFF;
   font-size: 30px;
   padding: 0;
+<<<<<<< HEAD
 }
 
 .profile__add-button:focus {
   outline: none;
   border: 2px solid #FFFFFF;
+=======
+>>>>>>> e80add0504c52744e3c3fa9745dc78a880799059
 }
 
 @media screen and (max-width: 425px) {

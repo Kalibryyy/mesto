@@ -8,10 +8,13 @@
   background-color: #000000;
   background-position: center;
   padding: 0;
+<<<<<<< HEAD
 }
 
 .profile__edit-button:focus {
   outline: none;
   border: 2px solid #FFFFFF;
+=======
+>>>>>>> e80add0504c52744e3c3fa9745dc78a880799059
 }
 

@@ -1,4 +1,5 @@
 .profile__data {
+<<<<<<< HEAD
   max-width: 550px;
 }
 
@@ -13,6 +14,9 @@
     margin-right: 0;
     max-width: 400px;
   }
+=======
+  margin-right: 17px;
+>>>>>>> e80add0504c52744e3c3fa9745dc78a880799059
 }
 
 @media screen and (max-width: 425px) {
