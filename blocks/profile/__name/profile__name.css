@@ -6,6 +6,11 @@
   margin-bottom: 16px;
   display: inline-block;
   margin-right: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 17px;
+  max-width: 85%;
 }
 
 @media screen and (max-width: 768px) {

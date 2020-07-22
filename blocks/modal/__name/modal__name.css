@@ -7,6 +7,9 @@
     display: block;
     width: 100%;
     font-family: inherit;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .modal__name:focus {

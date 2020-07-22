@@ -4,6 +4,7 @@
 @import url(../elements/__item/elements__item.css);
 @import url(../elements/__footer/elements__footer.css);
 @import url(../elements/__like/elements__like.css);
+@import url(../elements/__basket/elements__basket.css);
 
 .elements {
     max-width: 882px;

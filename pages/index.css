@@ -1,9 +1,27 @@
+@import url(../vendor/normalize.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/logo/logo.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__like/elements__like_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/modal/modal.css);
-@import url(../blocks/modal/modal_opened/modal_opened.css);
+@import url(../blocks/modal/_opened/modal_opened.css); 
 @import url(../blocks/hover/hover.css);
+
+.modal__picture-text {
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 10px;
+}
+
+.modal__picture-overlay {
+  position: fixed;
+  background: black;
+  opacity: .9;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}

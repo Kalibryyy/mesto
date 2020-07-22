@@ -1,9 +1,0 @@
-.profile__datas {
-  margin-right: 17px;
-}
-
-@media screen and (max-width: 320px) {
-  .profile__datas {
-    margin-right: 0;
-  }
-}
