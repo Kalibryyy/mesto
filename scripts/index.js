@@ -127,10 +127,10 @@ function createCard(data) {
   cardImage.addEventListener('click', () => {
     const openImage = document.querySelector('.modal__picture-image'); 
     const pictureText =  document.querySelector('.modal__picture-text'); // Выберите элементы, куда должны быть вставлены значения
-    /*openImage.src = data.link;
-    pictureText.textContent = data.name;*/
-    openImage.src = card.querySelector('.elements__image').src; 
-    pictureText.textContent = card.querySelector('.elements__text').textContent;
+    openImage.src = data.link;
+    pictureText.textContent = data.name;
+    /*openImage.src = card.querySelector('.elements__image').src; 
+    pictureText.textContent = card.querySelector('.elements__text').textContent;*/
     toggleModal(modalPicture);
   });
 
