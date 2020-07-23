@@ -85,16 +85,6 @@ function cardSubmitHandler (evt) {
     card.querySelector('.elements__image').src = cardPicInput.value;
     card.querySelector('.elements__text').textContent = cardNameInput.value;
 
-    const cardLike = card.querySelector('.elements__like');
-    cardLike.addEventListener('click', function(evt) {
-        evt.target.classList.toggle('elements__like_active');
-});
-
-    const cardRemove = card.querySelector('.elements__basket');
-    cardRemove.addEventListener('click', function(evt) {
-        evt.target.closest('.elements__item').remove();
-});
-
     elements__list.prepend(card);
 
     modalNewCard.querySelector('.modal__container').reset();

@@ -11,12 +11,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(100% - 80px);
-    /*opacity: 0;*/
-    
+    width: calc(100% - 80px);  
 }
-
-/*.modal__container_opened {
-    opacity: 1;
-    transition: opacity 2s linear;
-}*/
