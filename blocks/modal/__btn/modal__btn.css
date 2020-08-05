@@ -11,6 +11,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    margin-top: 43px;
 }
 
 .modal__btn:hover {

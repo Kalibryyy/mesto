@@ -10,18 +10,7 @@
 @import url(../blocks/modal/_opened/modal_opened.css); 
 @import url(../blocks/hover/hover.css);
 
-.modal__picture-text {
-  font-size: 12px;
-  line-height: 15px;
-  margin-top: 10px;
-}
 
-.modal__picture-overlay {
-  position: fixed;
-  background: black;
-  opacity: .9;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-}
+
+
+
