@@ -40,27 +40,27 @@
     <form class="modal__container" novalidate>
       <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
       <h2 class="modal__title">Редактировать профиль</h2>
-      <input id="profile-name-input" type="text" class="modal__input modal__input_type_name" name="name" value="Елена Стрижакова" minlength="2" maxlength="40" required>
+      <input id="profile-name-input" type="text" class="modal__input modal__input_type_name" name="name" placeholder="Елена Стрижакова" minlength="2" maxlength="40" required>
       <span id="profile-name-input-error"></span>
       <input id="profile-occupation-input" type="text" class="modal__input modal__input_type_occupation" name="occupation"
-        value="Начинающий веб-разработчик и опытный моряк-путешественник" minlength="2" maxlength="200" required>
+      placeholder="Начинающий веб-разработчик и опытный моряк-путешественник" minlength="2" maxlength="200" required>
       <span id="profile-occupation-input-error"></span>
-      <button type="submit" class="modal__btn">
+      <button type="submit" class="modal__btn" disabled>
         Сохранить
       </button>
     </form>
   </div>
-  
+
   <div class="modal modal_type_new-card">
     <div class="modal__overlay"></div>
     <form class="modal__container" novalidate>
       <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
       <h2 class="modal__title">Новое место</h2>
-      <input id="card-name-input" type="text" class="modal__input modal__input_type_name" name="name" value="Название" minlength="1" maxlength="30" required>
+      <input id="card-name-input" type="text" class="modal__input modal__input_type_name" name="name" placeholder="Название" minlength="1" maxlength="30" required>
       <span id="card-name-input-error"></span>
-      <input id="card-occupation-input" type="url" class="modal__input modal__input_type_occupation" name="occupation"value="Ссылка на картинку" required>
+      <input id="card-occupation-input" type="url" class="modal__input modal__input_type_occupation" name="occupation" placeholder="Ссылка на картинку" required>
       <span id="card-occupation-input-error"></span>
-      <button type="submit" class="modal__btn">
+      <button type="submit" class="modal__btn" disabled>
         Сохранить
       </button>
     </form>
