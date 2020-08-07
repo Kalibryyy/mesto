@@ -2,82 +2,81 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Место</title>
-  <link rel="stylesheet" href="pages/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+    <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="page">
-  <header class="header">
-    <div class="logo"></div>
-  </header>
-  <main class="content">
-    <section class="profile">
-      <div class="profile__info">
-        <img src="./images/profile-avatar.jpg" alt="аватар" class="profile__avatar">
-        <div class="profile__data">
-          <div class="profile__wrap">
-            <h1 class="profile__name">Елена Стрижакова</h1>
-            <button class="profile__edit-button hover" type="button"></button>
-          </div>
-          <p class="profile__occupation">Начинающий веб-разработчик и&nbsp;опытный моряк-путешественник</p>
+    <header class="header">
+        <div class="logo"></div>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <div class="profile__info">
+                <img src="./images/profile-avatar.jpg" alt="аватар" class="profile__avatar">
+                <div class="profile__data">
+                    <div class="profile__wrap">
+                        <h1 class="profile__name">Елена Стрижакова</h1>
+                        <button class="profile__edit-button hover" type="button"></button>
+                    </div>
+                    <p class="profile__occupation">Начинающий веб-разработчик и&nbsp;опытный моряк-путешественник</p>
+                </div>
+            </div>
+            <button class="profile__add-button hover">+</button>
+        </section>
+        <section class="elements">
+            <ul class="elements__list">
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">© 2020. Елена Стрижакова</p>
+    </footer>
+
+    <div class="modal modal_type_profile">
+        <div class="modal__overlay"></div>
+        <form class="modal__container" novalidate>
+            <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
+            <h2 class="modal__title">Редактировать профиль</h2>
+            <input id="profile-name-input" type="text" class="modal__input modal__input_type_name" name="name" value="Елена Стрижакова" placeholder="Елена Стрижакова" minlength="2" maxlength="40" required>
+            <span id="profile-name-input-error"></span>
+            <input id="profile-occupation-input" type="text" class="modal__input modal__input_type_occupation" name="occupation" value="Начинающий веб-разработчик и опытный моряк-путешественник" placeholder="Начинающий веб-разработчик и опытный моряк-путешественник"
+                minlength="2" maxlength="200" required>
+            <span id="profile-occupation-input-error"></span>
+            <button type="submit" class="modal__btn" disabled>
+        Сохранить
+      </button>
+        </form>
+    </div>
+    <div class="modal modal_type_new-card">
+        <div class="modal__overlay"></div>
+        <form class="modal__container" novalidate>
+            <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
+            <h2 class="modal__title">Новое место</h2>
+            <input id="card-name-input" type="text" class="modal__input modal__input_type_name" name="name" placeholder="Название" minlength="1" maxlength="30" required>
+            <span id="card-name-input-error"></span>
+            <input id="card-occupation-input" type="url" class="modal__input modal__input_type_occupation" name="occupation" placeholder="Ссылка на картинку" required>
+            <span id="card-occupation-input-error"></span>
+            <button type="submit" class="modal__btn" disabled>
+        Сохранить
+      </button>
+        </form>
+    </div>
+
+    <div class="modal modal_type_picture">
+        <div class="modal__picture-overlay"></div>
+        <div class="modal__wrapper">
+            <img src="./images/element-usa.JPG" alt="Название места" class="modal__picture-image">
+            <p class="modal__picture-text"></p>
+            <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
         </div>
-      </div>
-      <button class="profile__add-button hover">+</button>
-    </section>
-    <section class="elements">
-      <ul class="elements__list">
-      </ul>
-    </section>
-  </main>
-  <footer class="footer">
-    <p class="footer__copyright">© 2020. Елена Стрижакова</p>
-  </footer>
+    </div>
 
-  <div class="modal modal_type_profile">
-    <div class="modal__overlay"></div>
-    <form class="modal__container" novalidate>
-      <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
-      <h2 class="modal__title">Редактировать профиль</h2>
-      <input id="profile-name-input" type="text" class="modal__input modal__input_type_name" name="name" placeholder="Елена Стрижакова" minlength="2" maxlength="40" required>
-      <span id="profile-name-input-error"></span>
-      <input id="profile-occupation-input" type="text" class="modal__input modal__input_type_occupation" name="occupation"
-      placeholder="Начинающий веб-разработчик и опытный моряк-путешественник" minlength="2" maxlength="200" required>
-      <span id="profile-occupation-input-error"></span>
-      <button type="submit" class="modal__btn" disabled>
-        Сохранить
-      </button>
-    </form>
-  </div>
-
-  <div class="modal modal_type_new-card">
-    <div class="modal__overlay"></div>
-    <form class="modal__container" novalidate>
-      <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
-      <h2 class="modal__title">Новое место</h2>
-      <input id="card-name-input" type="text" class="modal__input modal__input_type_name" name="name" placeholder="Название" minlength="1" maxlength="30" required>
-      <span id="card-name-input-error"></span>
-      <input id="card-occupation-input" type="url" class="modal__input modal__input_type_occupation" name="occupation" placeholder="Ссылка на картинку" required>
-      <span id="card-occupation-input-error"></span>
-      <button type="submit" class="modal__btn" disabled>
-        Сохранить
-      </button>
-    </form>
-  </div>
-  
-  <div class="modal modal_type_picture">
-    <div class="modal__picture-overlay"></div>
-    <div class="modal__wrapper">
-    <img src="./images/element-usa.JPG" alt="Название места" class="modal__picture-image">
-    <p class="modal__picture-text"></p>
-    <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
-  </div>
-  </div>
-
-  <template class="template">
+    <template class="template">
     <li class="elements__item">
-      <img src="./images/element-trash.png" alt="корзина" class="elements__basket">
+      <img src="./images/element-trash.png" alt="" class="elements__basket">
     <img src="" alt="Название места" class="elements__image">
     <div class="elements__footer">
       <h2 class="elements__text"></h2>
@@ -85,8 +84,9 @@
     </div>
   </li>
   </template>
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+    <script src="./scripts/validate.js"></script>
+    <script src="./scripts/initial-cards.js"></script>
+    <script src="./scripts/index.js "></script>
 </body>
 
 </html>
