@@ -1,20 +1,47 @@
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+import {
+    initialCards,
+    object,
+    editButton,
+    addButton,
+    modalProfile,
+    modalNewCard,
+    modalPicture,
+    modalCloseProfile,
+    modalCloseNewCard,
+    modalClosePicture,
+    modalProfileOverlay,
+    modalNewCardOverlay,
+    modalPictureOverlay,
+    modalBtnProfile,
+    modalBtnNewCard,
+    elementsList,
+    editForm,
+    addForm
+} from './constants.js';
 
-const modalProfile = document.querySelector('.modal_type_profile');
-const modalNewCard = document.querySelector('.modal_type_new-card');
-const modalPicture = document.querySelector('.modal_type_picture');
+initialCards.forEach(item => {
+    renderCard(item);
+});
 
-const modalCloseProfile = modalProfile.querySelector('.modal__close');
-const modalCloseNewCard = modalNewCard.querySelector('.modal__close');
-const modalClosePicture = modalPicture.querySelector('.modal__close');
-
-const template = document.querySelector('.template').content;
-const elementsList = document.querySelector('.elements__list');
+function renderCard(item) {
+    const card = new Card(item, '.template_type_default');
+    const cardElement = card.generateCard();
+    elementsList.prepend(cardElement);
+}
 
 function toggleModal(modal) {
     modal.classList.toggle('modal_opened');
     document.addEventListener('keydown', handleEscape);
+    if (modal.classList.contains('modal_opened') && modal.classList.contains('modal__container')) {
+        const form = modal.querySelector('.modal__container');
+        form.reset();
+        const inputs = Array.from(modal.querySelectorAll('.modal__input'));
+        inputs.forEach(input => {
+            isValid(form, input, object);
+        });
+    }
 }
 
 function handleEscape(evt) {
@@ -37,12 +64,9 @@ modalCloseProfile.addEventListener('click', () =>
 
 modalCloseNewCard.addEventListener('click', () =>
     toggleModal(modalNewCard));
+
 modalClosePicture.addEventListener('click', () =>
     toggleModal(modalPicture));
-
-const modalProfileOverlay = modalProfile.querySelector('.modal__overlay');
-const modalNewCardOverlay = modalNewCard.querySelector('.modal__overlay');
-const modalPictureOverlay = modalPicture.querySelector('.modal__picture-overlay');
 
 modalProfileOverlay.addEventListener('click', function() {
     toggleModal(modalProfile);
@@ -68,9 +92,6 @@ function formSubmitHandler(evt) {
 
     modalProfile.querySelector('.modal__container').reset();
 }
-
-const modalBtnProfile = modalProfile.querySelector('.modal__btn');
-const modalBtnNewCard = modalNewCard.querySelector('.modal__btn');
 
 function cardSubmitHandler(evt) {
     evt.preventDefault();
@@ -98,42 +119,8 @@ modalBtnProfile.addEventListener('click', () =>
 modalBtnNewCard.addEventListener('click', () =>
     toggleModal(modalNewCard));
 
-function createCard(data) {
-    const card = template.cloneNode(true);
-    const cardImage = card.querySelector('.elements__image');
+const editFormValidator = new FormValidator(object, editForm);
+const addFormValidator = new FormValidator(object, addForm);
 
-    cardImage.src = data.link;
-    card.querySelector('.elements__text').textContent = data.name;
-
-    const cardLike = card.querySelector('.elements__like');
-    cardLike.addEventListener('click', function(evt) {
-        evt.target.classList.toggle('elements__like_active');
-    });
-
-    const cardRemove = card.querySelector('.elements__basket');
-    cardRemove.addEventListener('click', function(evt) {
-        evt.target.closest('.elements__item').remove();
-    });
-
-
-    cardImage.addEventListener('click', () => {
-        const openImage = document.querySelector('.modal__picture-image');
-        const pictureText = document.querySelector('.modal__picture-text'); // Выберите элементы, куда должны быть вставлены значения
-        openImage.src = data.link;
-        openImage.alt = data.name;
-        pictureText.textContent = data.name;
-        //openImage.src = card.querySelector('.elements__image').src; 
-        //pictureText.textContent = card.querySelector('.elements__text').textContent;
-        toggleModal(modalPicture);
-    });
-
-    return card
-}
-
-function renderCard(data) {
-    elementsList.prepend(createCard(data));
-}
-
-initialCards.forEach(function(data) {
-    renderCard(data);
-});
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();

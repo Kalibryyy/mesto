@@ -37,7 +37,7 @@
 
     <div class="modal modal_type_profile">
         <div class="modal__overlay"></div>
-        <form class="modal__container" novalidate>
+        <form class="modal__container modal__container_type_edit" novalidate>
             <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
             <h2 class="modal__title">Редактировать профиль</h2>
             <input id="profile-name-input" type="text" class="modal__input modal__input_type_name" name="name" value="Елена Стрижакова" placeholder="Елена Стрижакова" minlength="2" maxlength="40" required>
@@ -52,7 +52,7 @@
     </div>
     <div class="modal modal_type_new-card">
         <div class="modal__overlay"></div>
-        <form class="modal__container" novalidate>
+        <form class="modal__container modal__container_type_add" novalidate>
             <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
             <h2 class="modal__title">Новое место</h2>
             <input id="card-name-input" type="text" class="modal__input modal__input_type_name" name="name" placeholder="Название" minlength="1" maxlength="30" required>
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <template class="template">
+    <template class="template template_type_default">
     <li class="elements__item">
       <img src="./images/element-trash.png" alt="" class="elements__basket">
     <img src="" alt="Название места" class="elements__image">
@@ -84,9 +84,11 @@
     </div>
   </li>
   </template>
-    <script src="./scripts/validate.js"></script>
-    <script src="./scripts/initial-cards.js"></script>
-    <script src="./scripts/index.js"></script>
-</body>
 
+    <script type="module" src="./scripts/FormValidator.js"></script>
+    <script type="module" src="./scripts/constants.js"></script>
+    <script type="module" src="./scripts/card.js"></script>
+    <script type="module" src="./scripts/index.js "></script>
+
+</body>
 </html>
