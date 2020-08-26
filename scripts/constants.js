@@ -1,57 +1,65 @@
 export {
-    initialCards,
-    object,
-    editButton,
-    addButton,
-    modalProfile,
-    modalNewCard,
-    modalPicture,
-    modalCloseProfile,
-    modalCloseNewCard,
-    modalClosePicture,
-    modalProfileOverlay,
-    modalNewCardOverlay,
-    modalPictureOverlay,
-    modalBtnProfile,
-    modalBtnNewCard,
-    elementsList,
-    editForm,
-    addForm
+  initialCards,
+  object,
+  editButton,
+  addButton,
+  modalProfile,
+  modalNewCard,
+  modalPicture,
+  modalCloseProfile,
+  modalCloseNewCard,
+  modalClosePicture,
+  modalProfileOverlay,
+  modalNewCardOverlay,
+  modalPictureOverlay,
+  modalBtnProfile,
+  modalBtnNewCard,
+  elementsList,
+  editForm,
+  addForm,
+  openImage,
+  pictureText,
+  nameInput,
+  jobInput,
+  nameProfile,
+  jobProfile,
+  cardNameInput,
+  cardPicInput
 };
 
 const initialCards = [{
-        name: 'США',
-        link: './images/element-usa.JPG'
-    },
-    {
-        name: 'Бермудские острова',
-        link: './images/element-bermuda.JPG'
-    },
-    {
-        name: 'Германия',
-        link: './images/element-germany.JPG'
-    },
-    {
-        name: 'Италия',
-        link: './images/element-italy.JPG'
-    },
-    {
-        name: 'Португалия',
-        link: './images/element-portugal.JPG'
-    },
-    {
-        name: 'Французская Полинезия',
-        link: './images/element-french-polynesia.JPG'
-    }
+    name: 'США',
+    link: './images/element-usa.JPG'
+  },
+  {
+    name: 'Бермудские острова',
+    link: './images/element-bermuda.JPG'
+  },
+  {
+    name: 'Германия',
+    link: './images/element-germany.JPG'
+  },
+  {
+    name: 'Италия',
+    link: './images/element-italy.JPG'
+  },
+  {
+    name: 'Португалия',
+    link: './images/element-portugal.JPG'
+  },
+  {
+    name: 'Французская Полинезия',
+    link: './images/element-french-polynesia.JPG'
+  }
 ];
 
 const object = {
-    formSelector: '.modal__container',
-    inputSelector: '.modal__input',
-    submitButtonSelector: '.modal__btn',
-    inactiveButtonClass: 'modal__btn_disabled',
-    inputErrorClass: 'modal__input_type_error',
-    errorClass: 'modal__error_visible',
+  formSelector: '.modal__container',
+  inputSelector: '.modal__input',
+  submitButtonSelector: '.modal__btn',
+  inactiveButtonClass: 'modal__btn_disabled',
+  inputErrorClass: 'modal__input_type_error',
+  errorClass: 'modal__error_visible',
 }
 
 const editButton = document.querySelector('.profile__edit-button');
@@ -76,3 +84,31 @@ const elementsList = document.querySelector('.elements__list');
 
 const editForm = document.querySelector('.modal__container_type_edit');
 const addForm = document.querySelector('.modal__container_type_add');
+
+const openImage = document.querySelector('.modal__picture-image');
+const pictureText = document.querySelector('.modal__picture-text');
+
+const nameInput = modalProfile.querySelector('.modal__input_type_name'); //Выбрала поле имени в модалке профиля
+const jobInput = modalProfile.querySelector('.modal__input_type_occupation'); // Выбрала поле деятельности в модалке профиля
+
+const nameProfile = document.querySelector('.profile__name');
+const jobProfile = document.querySelector('.profile__occupation'); // Выбрала элементы, куда должны быть вставлены значения полей
+
+const cardNameInput = modalNewCard.querySelector('.modal__input_type_name'); // Выбрала поле имени в модалке карточки
+const cardPicInput = modalNewCard.querySelector('.modal__input_type_occupation'); // Выбрала поле картинки в модалке карточки
+
+export function toggleModal(modal) {
+  modal.classList.toggle('modal_opened');
+  if (modal.classList.contains('modal_opened')) {
+    document.addEventListener('keydown', handleEscape);
+  } else {
+    document.removeEventListener('keydown', handleEscape);
+  }
+}
+
+export function handleEscape(evt) {
+  if (evt.key === 'Escape') {
+    const modalOpened = document.querySelector('.modal_opened');
+    toggleModal(modalOpened);
+  }
+}

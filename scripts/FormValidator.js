@@ -1,6 +1,4 @@
-export { FormValidator };
-
-class FormValidator {
+export class FormValidator {
     constructor(params, formElement) {
         this._formElement = formElement;
         this._inputSelector = params.inputSelector;
