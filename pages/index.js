@@ -36,17 +36,17 @@ cardsList.renderItems();
 class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   open() {
     this._popup.classList.add('modal_opened');
-    // this.setEventListeners(); 
-    document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
   close() {
     this._popup.classList.remove('modal_opened');
-    document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   //содержит логику закрытия попапа клавишей Esc
@@ -94,6 +94,8 @@ class PopupWithImage extends Popup {
 }
 
 const popupWithImage = new PopupWithImage('.modal_type_picture');
+
+popupWithImage.setEventListeners();
 
 class PopupWithForm extends Popup {
   constructor(popupSelector, {
@@ -181,6 +183,8 @@ const userInfoPopup = new PopupWithForm('.modal_type_profile', {
   }
 });
 
+userInfoPopup.setEventListeners()
+
 const newCardPopup = new PopupWithForm('.modal_type_new-card', {
   handleFormSubmit: (formData) => {
     // при создании экземпляра Card передаём
@@ -199,19 +203,21 @@ const newCardPopup = new PopupWithForm('.modal_type_new-card', {
   }
 });
 
+newCardPopup.setEventListeners();
+
 // с помощью getUserInfo берём данные из разметки перед открытием попапа с данными пользователя:
 editButton.addEventListener('click', () => {
   const currentUserInfo = userInfo.getUserInfo();
   nameInput.value = currentUserInfo.userName;
   jobInput.value = currentUserInfo.userInfo;
   userInfoPopup.open();
-  userInfoPopup.setEventListeners();
 });
 
 addButton.addEventListener('click', () => {
   newCardPopup.open();
-  newCardPopup.setEventListeners();
 });
+
+
 
 const editFormValidator = new FormValidator(object, editForm);
 const addFormValidator = new FormValidator(object, addForm);
