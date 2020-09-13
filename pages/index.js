@@ -40,14 +40,13 @@ class Popup {
 
   open() {
     this._popup.classList.add('modal_opened');
-    this.setEventListeners();
+    // this.setEventListeners(); 
     document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
   }
 
   close() {
     this._popup.classList.remove('modal_opened');
     document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
-    
   }
 
   //содержит логику закрытия попапа клавишей Esc
@@ -114,7 +113,7 @@ class PopupWithForm extends Popup {
     this._inputList.forEach(input => {
       this._formValues[input.name] = input.value;
     })
-console.log(this._formValues);
+    console.log(this._formValues);
 
     return this._formValues;
   }
@@ -126,21 +125,20 @@ console.log(this._formValues);
       evt.preventDefault();
 
       this._handleFormSubmit(this._getInputValues());
+      this.close();
     });
   }
 
   open() {
     super.open();
     this._popup.querySelector('.modal__overlay').addEventListener('click', () => this._handleOverlayClose());
-    this._popup.querySelector('.modal__btn').addEventListener('click', () => this.close());
   }
 
   close() {
     super.close();
     this._popup.querySelector('.modal__container').reset();
     this._popup.querySelector('.modal__overlay').removeEventListener('click', () => this._handleOverlayClose());
-    // modalBtnNewCard.disabled = true; //??
-    // modalBtnNewCard.classList.add('modal__btn_disabled'); // ??
+    // снять слушатель сабмита?
   }
 }
 
