@@ -1,15 +1,9 @@
-import {
-  openImage,
-  pictureText,
-  modalPicture,
-  handleEscape
-} from './constants.js';
-
-export class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._text = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -35,11 +29,10 @@ export class Card {
       this._handleCardRemove();
     });
     this._element.querySelector('.elements__image').addEventListener('click', () => {
-      openImage.src = this._image;
-      openImage.alt = this._text;
-      pictureText.textContent = this._text;
-      modalPicture.classList.add('modal_opened');
-      document.addEventListener('keydown', handleEscape);
+      this._handleCardClick({
+        name: this._text,
+        link: this._image
+      });
     });
   }
 

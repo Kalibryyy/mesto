@@ -80,9 +80,9 @@ const modalPictureOverlay = modalPicture.querySelector('.modal__picture-overlay'
 const modalBtnProfile = modalProfile.querySelector('.modal__btn');
 const modalBtnNewCard = modalNewCard.querySelector('.modal__btn');
 
-const elementsList = document.querySelector('.elements__list');
+const elementsList = '.elements__list';
 
-const editForm = document.querySelector('.modal__container_type_edit');
+const editForm = document.querySelector('.modal__container_type_edit'); 
 const addForm = document.querySelector('.modal__container_type_add');
 
 const openImage = document.querySelector('.modal__picture-image');
@@ -97,18 +97,4 @@ const jobProfile = document.querySelector('.profile__occupation'); // Выбра
 const cardNameInput = modalNewCard.querySelector('.modal__input_type_name'); // Выбрала поле имени в модалке карточки
 const cardPicInput = modalNewCard.querySelector('.modal__input_type_occupation'); // Выбрала поле картинки в модалке карточки
 
-export function toggleModal(modal) {
-  modal.classList.toggle('modal_opened');
-  if (modal.classList.contains('modal_opened')) {
-    document.addEventListener('keydown', handleEscape);
-  } else {
-    document.removeEventListener('keydown', handleEscape);
-  }
-}
 
-export function handleEscape(evt) {
-  if (evt.key === 'Escape') {
-    const modalOpened = document.querySelector('.modal_opened');
-    toggleModal(modalOpened);
-  }
-}
