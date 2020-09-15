@@ -17,6 +17,10 @@ import {
   jobInput,
 } from '../utils/constants.js';
 
+import './index.css';
+
+
+
 const cardsList = new Section({
   data: initialCards,
   renderer: (cardItem) => {

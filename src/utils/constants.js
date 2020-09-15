@@ -27,29 +27,36 @@ export {
   cardPicInput
 };
 
+import usa from '../images/element-usa.JPG';
+import bermuda from '../images/element-bermuda.JPG';
+import germany from '../images/element-germany.JPG'
+import italy from '../images/element-italy.JPG'
+import portugal from '../images/element-portugal.JPG'
+import frenchPolynesia from '../images/element-french-polynesia.JPG'
+
 const initialCards = [{
     name: 'США',
-    link: './images/element-usa.JPG'
+    link: usa
   },
   {
     name: 'Бермудские острова',
-    link: './images/element-bermuda.JPG'
+    link: bermuda
   },
   {
     name: 'Германия',
-    link: './images/element-germany.JPG'
+    link: germany
   },
   {
     name: 'Италия',
-    link: './images/element-italy.JPG'
+    link: italy
   },
   {
     name: 'Португалия',
-    link: './images/element-portugal.JPG'
+    link: portugal
   },
   {
     name: 'Французская Полинезия',
-    link: './images/element-french-polynesia.JPG'
+    link: frenchPolynesia
   }
 ];
 
