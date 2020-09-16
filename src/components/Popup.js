@@ -7,11 +7,13 @@ export default class Popup {
     open() {
       this._popup.classList.add('modal_opened');
       document.addEventListener('keydown', this._handleEscClose);
+      this._popup.querySelector('.modal__overlay').addEventListener('click', () => this._handleOverlayClose());
     }
   
     close() {
       this._popup.classList.remove('modal_opened');
       document.removeEventListener('keydown', this._handleEscClose);
+      this._popup.querySelector('.modal__overlay').removeEventListener('click', () => this._handleOverlayClose());
     }
   
     //содержит логику закрытия попапа клавишей Esc

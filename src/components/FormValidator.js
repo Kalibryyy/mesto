@@ -53,14 +53,18 @@ export default class FormValidator {
         // Если есть хотя бы один невалидный инпут
         if (this._hasInvalidInput(inputList)) {
             // сделай кнопку неактивной
-            buttonElement.classList.add(this._inactiveButtonClass);
-            buttonElement.disabled = true;
+            this.disableButton(buttonElement);
         } else {
             // иначе сделай кнопку активной
             buttonElement.classList.remove(this._inactiveButtonClass);
             buttonElement.disabled = false;
         }
     };
+
+    disableButton = (buttonElement) => {
+        buttonElement.classList.add(this._inactiveButtonClass);
+        buttonElement.disabled = true;
+    }
 
     _setEventListeners = () => {
         // Находим все поля внутри формы,

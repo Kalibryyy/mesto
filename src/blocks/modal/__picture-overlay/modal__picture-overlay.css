@@ -1,9 +1,0 @@
-.modal__picture-overlay {
-    position: fixed;
-    background: black;
-    opacity: .9;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }

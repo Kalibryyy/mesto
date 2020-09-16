@@ -6,6 +6,8 @@ export default class PopupWithForm extends Popup {
     }) {
       super(popupSelector);
       this._handleFormSubmit = handleFormSubmit;
+      this._popupContainer = this._popup.querySelector('.modal__container');
+      this._submitBtn = this._popup.querySelector('.modal__btn')
     }
   
     // собирает данные всех полей формы
@@ -18,7 +20,6 @@ export default class PopupWithForm extends Popup {
       this._inputList.forEach(input => {
         this._formValues[input.name] = input.value;
       })
-      console.log(this._formValues);
   
       return this._formValues;
     }
@@ -36,12 +37,10 @@ export default class PopupWithForm extends Popup {
   
     open() {
       super.open();
-      this._popup.querySelector('.modal__overlay').addEventListener('click', () => this._handleOverlayClose());
     }
   
     close() {
       super.close();
-      this._popup.querySelector('.modal__container').reset();
-      this._popup.querySelector('.modal__overlay').removeEventListener('click', () => this._handleOverlayClose());
+      this._popupContainer.reset();  
     }
   }

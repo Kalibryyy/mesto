@@ -15,24 +15,26 @@ import {
   addForm,
   nameInput,
   jobInput,
+  modalBtnNewCard
 } from '../utils/constants.js';
 
 import './index.css';
 
+function createCard (cardItem) {
+  const card = new Card(cardItem, '.template_type_default', {
+    handleCardClick: (cardItem) => {
+      popupWithImage.open(cardItem); 
+    }
+  }); 
+  const cardElement = card.generateCard();
 
+  cardsList.addItem(cardElement);
+}
 
 const cardsList = new Section({
   data: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '.template_type_default', {
-      handleCardClick: (cardData) => {
-        popupWithImage.open(cardData);
-      }
-    });
-
-    const cardElement = card.generateCard();
-
-    cardsList.addItem(cardElement);
+    createCard(cardItem);
   }
 }, elementsList);
 
@@ -58,19 +60,7 @@ userInfoPopup.setEventListeners()
 
 const newCardPopup = new PopupWithForm('.modal_type_new-card', {
   handleFormSubmit: (formData) => {
-    // при создании экземпляра Card передаём
-    // ему объект с данными формы
-    const card = new Card(formData, '.template_type_default', {
-      handleCardClick: () => {
-        card.addEventListener('click', () => {
-          popupWithImage.open();
-        });
-      }
-    });
-
-    const cardElement = card.generateCard();
-
-    cardsList.addItem(cardElement);
+    createCard(formData);
   }
 });
 
@@ -86,6 +76,7 @@ editButton.addEventListener('click', () => {
 
 addButton.addEventListener('click', () => {
   newCardPopup.open();
+  addFormValidator.disableButton(modalBtnNewCard);
 });
 
 const editFormValidator = new FormValidator(object, editForm);
