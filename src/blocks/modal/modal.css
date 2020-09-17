@@ -10,6 +10,7 @@
 @import url(../modal/__btn/_disabled/modal__btn_disabled.css);
 @import url(../modal/__input/_type_error/modal__input_type_error.css);
 @import url(../modal/__error_visible/modal__error_visible.css);
+@import url(../modal/__overlay/__overlay_image/modal__overlay_image.css);
 
 .modal {
     visibility: hidden;
