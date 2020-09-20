@@ -70,8 +70,21 @@
         <form class="modal__container modal__container_type_confirm-card-del" novalidate>
             <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
             <h2 class="modal__title">Вы уверены?</h2>
-            <button type="submit" class="modal__btn" disabled>
+            <button type="submit" class="modal__btn">
         Да
+      </button>
+        </form>
+    </div>
+
+    <div class="modal modal_type_avatar">
+        <div class="modal__overlay"></div>
+        <form class="modal__container modal__container_type_avatar" novalidate>
+            <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
+            <h2 class="modal__title">Обновить аватар</h2>
+            <input id="card-avatar-input" type="url" class="modal__input modal__input_type_occupation" name="link" placeholder="Ссылка на картинку" required>
+            <span id="card-avatar-input-error"></span>
+            <button type="submit" class="modal__btn">
+        Сохранить
       </button>
         </form>
     </div>

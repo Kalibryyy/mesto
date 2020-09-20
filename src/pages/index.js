@@ -16,6 +16,7 @@ import {
   elementsList,
   editForm,
   addForm,
+  avatarForm,
   nameInput,
   jobInput,
   modalBtnNewCard,
@@ -90,8 +91,10 @@ function createCard(cardItem) {
         .catch(err => console.log(`Изменения статуса лайка: ${err}`));
     },
     handleCardDelete: (cardItem) => {
-      console.log(cardItem);
-      submitPopup.setSubmitAction(cardItem => {
+      console.log(`${cardItem.id} - cardItem.id`);
+      submitPopup.setSubmitAction(() => {
+        console.log(cardItem.id);
+
         api.delete('cards', cardItem.id)
           .then((res) => {
             console.log(res);
@@ -127,17 +130,30 @@ const newCardPopup = new PopupWithForm('.modal_type_new-card', {
   }
 });
 
-// const newAvatar = new PopupAvatarUpdate('.modal_type_avatar', {
-//   handleFormSubmit: () => {
-//     api.updateAvatar('users/me/avatar') // url нового аватара?
-//       .then(() => {
-//         .style.backgroundImage = `url(${})`;
-//       })
-//   }
-// });
+const newAvatar = new PopupAvatarUpdate('.modal_type_avatar', {
+  handleFormSubmit: (formUrl) => {
+    spinner.renderLoading(true);
 
-// newAvatar.setEventListeners();
+    api.updateAvatar('users/me/avatar', formUrl) // url нового аватара
+      .then(() => {
+        document.querySelector('.profile__avatar').style.backgroundImage = `${formUrl}`; //перезагрузить страничку?
+      })
+      .finally(() => {
+        spinner.renderLoading(false);
+      });
+  }
+});
 
+// Перед зпросом не забудьте запустить прелодер, то есть как-то отобразить в интерфейсе что запрос ушел 
+// и в данный момент ожидается его ответ (в ТЗ тоже об этом сказано). 
+// После ответа сервера (если он ок), вам надо заменить картинку на фронте и отключить прелодер, а затем закрыть попап
+
+console.log(newAvatar);
+
+newAvatar.setEventListeners();
+document.querySelector('.profile__avatar').addEventListener('click', () => {
+  newAvatar.open();
+})
 
 const popupWithImage = new PopupWithImage('.modal_type_picture');
 
@@ -170,9 +186,11 @@ addButton.addEventListener('click', () => {
 
 const editFormValidator = new FormValidator(object, editForm);
 const addFormValidator = new FormValidator(object, addForm);
+const newAvatarValidator = new FormValidator(object, avatarForm);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+newAvatarValidator.enableValidation();
 
 // fetch('https://mesto.nomoreparties.co/v1/cohort-15/cards', {
 //   headers: {

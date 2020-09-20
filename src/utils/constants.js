@@ -16,6 +16,7 @@ export {
   elementsList,
   editForm,
   addForm,
+  avatarForm,
   openImage,
   pictureText,
   nameInput,
@@ -23,7 +24,7 @@ export {
   nameProfile,
   jobProfile,
   cardNameInput,
-  cardPicInput
+  cardPicInput,
 };
 
 const object = {
@@ -57,6 +58,7 @@ const elementsList = '.elements__list';
 
 const editForm = document.querySelector('.modal__container_type_edit'); 
 const addForm = document.querySelector('.modal__container_type_add');
+const avatarForm = document.querySelector('.modal__container_type_avatar'); 
 
 const openImage = document.querySelector('.modal__picture-image');
 const pictureText = document.querySelector('.modal__picture-text');

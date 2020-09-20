@@ -26,18 +26,3 @@ export default class Section {
     this._container.prepend(element);
   }
 }
-
-// this.api
-//     .get(path)
-//     .then(cards => {
-//       cards.forEach(card => {
-//         this.addCard(
-//           card.name,
-//           card.link,
-//           card.likes,
-//           card.likes.length,
-//           card.owner._id,
-//           card._id
-//         );
-//       });
-//     })
