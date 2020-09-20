@@ -14,7 +14,7 @@
     <main class="content">
         <section class="profile">
             <div class="profile__info">
-                <img src="./images/profile-avatar.jpg" alt="аватар" class="profile__avatar">
+                <div class="profile__avatar"></div>
                 <div class="profile__data">
                     <div class="profile__wrap">
                         <h1 class="profile__name">Елена Стрижакова</h1>
@@ -29,6 +29,7 @@
             <ul class="elements__list">
             </ul>
         </section>
+        <div class="spinner spinner_hidden"><i></i></div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2020. Елена Стрижакова</p>
@@ -64,6 +65,17 @@
         </form>
     </div>
 
+    <div class="modal modal_type_confirm-card-del">
+        <div class="modal__overlay"></div>
+        <form class="modal__container modal__container_type_confirm-card-del" novalidate>
+            <img src="./images/close-icon.svg" alt="закрывающая иконка" class="modal__close hover">
+            <h2 class="modal__title">Вы уверены?</h2>
+            <button type="submit" class="modal__btn" disabled>
+        Да
+      </button>
+        </form>
+    </div>
+
     <div class="modal modal_type_picture">
         <div class="modal__overlay modal__overlay_image"></div>
         <div class="modal__wrapper">
@@ -79,7 +91,10 @@
     <img src="#" alt="Название места" class="elements__image">
     <div class="elements__footer">
       <h2 class="elements__text"></h2>
-      <button class="elements__like" type="button"></button>
+      <div class="elements__like-container">
+        <button class="elements__like" type="button"></button>
+        <div class="elements__likes-number"></div>
+      </div>   
     </div>
   </li>
   </template>

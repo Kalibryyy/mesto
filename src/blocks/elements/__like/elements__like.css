@@ -1,12 +1,13 @@
 .elements__like {
   background-image: url(../../../images/element-like.png);
-    width: 33px;
-    height: 18px;
-    border: 0;
-    background-color: white;
-    padding: 0;
-    cursor: pointer;
-    background-repeat: no-repeat;
+  width: 21px;
+  height: 18px;
+  border: 0;
+  background-color: white;
+  padding: 0;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  margin-bottom: 3px;
 }
 
 .elements__like:focus {
@@ -16,4 +17,3 @@
 .elements__like:focus-within {
   outline: none;
 }
-

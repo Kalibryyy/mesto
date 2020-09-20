@@ -6,6 +6,8 @@
 @import url(../elements/__like/elements__like.css);
 @import url(../elements/__like/_active/elements__like_active.css);
 @import url(../elements/__basket/elements__basket.css);
+@import url(../elements/__likes_number/elements__likes-number.css);
+@import url(../elements/__basket/__basket_visible/__basket_visible.css);
 
 .elements {
     max-width: 882px;

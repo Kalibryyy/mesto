@@ -1,5 +1,4 @@
 export {
-  initialCards,
   object,
   editButton,
   addButton,
@@ -26,39 +25,6 @@ export {
   cardNameInput,
   cardPicInput
 };
-
-import usa from '../images/element-usa.JPG';
-import bermuda from '../images/element-bermuda.JPG';
-import germany from '../images/element-germany.JPG'
-import italy from '../images/element-italy.JPG'
-import portugal from '../images/element-portugal.JPG'
-import frenchPolynesia from '../images/element-french-polynesia.JPG'
-
-const initialCards = [{
-    name: 'США',
-    link: usa
-  },
-  {
-    name: 'Бермудские острова',
-    link: bermuda
-  },
-  {
-    name: 'Германия',
-    link: germany
-  },
-  {
-    name: 'Италия',
-    link: italy
-  },
-  {
-    name: 'Португалия',
-    link: portugal
-  },
-  {
-    name: 'Французская Полинезия',
-    link: frenchPolynesia
-  }
-];
 
 const object = {
   formSelector: '.modal__container',
