@@ -3,6 +3,7 @@ import Popup from './Popup.js';
 export default class PopupWithSubmit extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
+    this._popupContainer = this._popup.querySelector('.modal__container');
   }
 
   setSubmitAction(submitAction) {
@@ -12,9 +13,11 @@ export default class PopupWithSubmit extends Popup {
   setEventListeners() {
     super.setEventListeners();
     // добавляем обработчик сабмита формы
-    this._popup.addEventListener('submit', (evt) => {
+    this._popupContainer.addEventListener('submit', (evt) => {
       evt.preventDefault();
-
+      
+      console.log('вызван сабмит');
+      
       this._handleSubmitCallback();
       this.close();
     });

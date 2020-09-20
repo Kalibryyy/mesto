@@ -42,7 +42,6 @@ export default class Api {
       .catch(this.showError);
   }
 
-
   delete(path, id) {
     return fetch(`${this._url}${path}/${id}`, {
       method: "DELETE",
@@ -53,17 +52,32 @@ export default class Api {
       .catch(this.showError);
   }
 
-  //   updateAvatar(path, url) {
-  //     return fetch(`${this._url}${path}`, {
-  //       method: "PATCH",
-  //       headers: this.headers,
-  //       body: JSON.stringify({
-  //         avatar: 
-  //       })
-  //     })
-  //       .then(this.checkStatus)
-  //       .catch(this.showError);
-  //   }
+    updateAvatar(path, url) {
+      return fetch(`${this._url}${path}`, {
+        method: "PATCH",
+        headers: this.headers,
+        body: JSON.stringify({
+          avatar: url// ссылка на новый аватар
+        })
+      })
+        .then(this.checkStatus)
+        .catch(this.showError);
+    }
+
+//   api.delete('cards', cardItem.id)
+//   .then((res) => {
+//     console.log(res);
+    
+//     card._handleCardRemove();
+//   })
+//   .catch(err => console.log(err));
+
+//   fetch('https://mesto.nomoreparties.co/v1/cohort-15/cards/5f6739ec82b7ae00116466bf', {
+//     method: "DELETE",
+//     headers: {
+//     authorization: '4b693f44-f60e-4f4e-bfd2-2bb476e7515d'
+//     }
+//   })
 
   addCard(path, formData) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-15/${path}`, {
@@ -122,3 +136,5 @@ export default class Api {
 //       about: 'уходи говорю'
 //     })
 //   })
+
+

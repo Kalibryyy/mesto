@@ -9,6 +9,7 @@ export default class Card {
     this._image = data.link;
     this._likes = data.likes;
     this._id = data._id;
+    this._cardOwner = data.owner._id;
     this._cardSelector = cardSelector;
     this._currentUserID = currentUserID;
     this._handleCardClick = handleCardClick;
@@ -25,9 +26,9 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     // console.log(`${this._currentUserID}`);
-    // console.log(this._id); // это id карточки, нужно person._id
+    console.log(this._cardOwner); // это id карточки, нужно person._id - ownerid лежит в карточке (item.owner.id)
 
-    if (`${this._currentUserID}` === this._id) {
+    if (`${this._currentUserID}` === this._cardOwner) {
       console.log('моя'); // не работает
 
       this._element.querySelector('.elements__basket').classList.add('elements__basket_visible');
@@ -37,7 +38,6 @@ export default class Card {
     elementsImage.src = this._image;
     elementsImage.alt = this._text;
     this._element.querySelector('.elements__text').textContent = this._text;
-    console.log(this._likes.length);
     
     this._renderLikesNumber();
 
@@ -50,9 +50,8 @@ export default class Card {
   }
 
   updateLikes(newCardData) {
-    //менять свойство this._likes ?
     this._likes = newCardData.likes;
-    console.log(this._likes); // массив лайков по кликнутой карточке
+    // console.log(this._likes); // массив лайков по кликнутой карточке
 
     this._renderLikesNumber();
 

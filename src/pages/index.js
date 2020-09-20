@@ -6,7 +6,8 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import Spinner from '../components/Spinner.js';
-import PopupWithSubmit from '../components/PopupWithSubmit.js'
+import PopupWithSubmit from '../components/PopupWithSubmit.js';
+import PopupAvatarUpdate from '../components/PopupAvatarUpdate.js';
 
 import {
   object,
@@ -32,6 +33,10 @@ const api = new Api({
 
 const currentUserID = '98f0b3a604cd2bd64a8fb924';
 
+//лучше используйте Promise.all чтобы дождаться получения всех начальнх данных (данных пользователя и данных по карточкам), 
+//а потом вообще весь свой код перенесите в then, который придет после этого promise.all тогда у вас всем переменным 
+//внутри этого then, включая функции, будет доступна ссылка на данные полученные из апи
+
 const spinner = new Spinner(document.querySelector('.spinner'));
 
 const initialUserInfo = api.getUserInfo('users/me');
@@ -56,18 +61,19 @@ function cardRenderer(item) {
 }
 
 const submitPopup = new PopupWithSubmit('.modal_type_confirm-card-del');
+submitPopup.setEventListeners();
 
 function createCard(cardItem) {
   const card = new Card(cardItem, '.template_type_default', currentUserID, {
     handleCardClick: (cardItem) => {
       console.log(cardItem);
-      
+
       popupWithImage.open(cardItem);
     },
     handleLikePut: (cardItem) => {
       console.log('вызван put');
       console.log(cardItem);
-      
+
       api.put('cards/likes', cardItem.id)
         .then(newCardData => {
           card.updateLikes(newCardData);
@@ -84,27 +90,26 @@ function createCard(cardItem) {
         .catch(err => console.log(`Изменения статуса лайка: ${err}`));
     },
     handleCardDelete: (cardItem) => {
-      console.log(cardItem); //id карты
+      console.log(cardItem);
       submitPopup.setSubmitAction(cardItem => {
         api.delete('cards', cardItem.id)
-        .then((res) => {
-          console.log(res);
-          
-          card._handleCardRemove();
-        })
-        .catch(err => console.log(err));
+          .then((res) => {
+            console.log(res);
+
+            card._handleCardRemove();
+          })
+          .catch(err => console.log(err));
         //  сюда прописать действия которые необходимо выполнить после нажатия 
         // на кнопку внутри попапа подтверждения
       })
       submitPopup.open();
-      submitPopup.setEventListeners();
-      
+
       // а тут открыть попап уже с установленным действием, то есть удалением текущей карточки
     }
   });
 
-//переопределять выполняемую функцию надо только после нажатия на кнопку удаления 
-//(перед непосредственным открытием попапа)
+  //переопределять выполняемую функцию надо только после нажатия на кнопку удаления 
+  //(перед непосредственным открытием попапа)
 
   const cardElement = card.generateCard();
 
@@ -116,14 +121,23 @@ cardsList.renderItems();
 const newCardPopup = new PopupWithForm('.modal_type_new-card', {
   handleFormSubmit: (formData) => {
     api.addCard('cards', formData)
-      .then(cardRenderer(formData));
+      .then((formData) => {
+        cardRenderer(formData);
+      });
   }
 });
 
-// // api.updateAvatar(path)
-// .then(userInfo => {
-// //   .style.backgroundImage = ;
-// // });
+// const newAvatar = new PopupAvatarUpdate('.modal_type_avatar', {
+//   handleFormSubmit: () => {
+//     api.updateAvatar('users/me/avatar') // url нового аватара?
+//       .then(() => {
+//         .style.backgroundImage = `url(${})`;
+//       })
+//   }
+// });
+
+// newAvatar.setEventListeners();
+
 
 const popupWithImage = new PopupWithImage('.modal_type_picture');
 
