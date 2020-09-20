@@ -32,4 +32,12 @@ export default class Popup {
       this._popup.querySelector('.modal__close').addEventListener('click', () =>
         this.close());
     }
+
+    changeSaveCaption(isLoading) {
+      if (isLoading) {
+        this._popup.querySelector('.modal__btn').textContent = 'Сохранение...';
+      } else {
+        this._popup.querySelector('.modal__btn').textContent = 'Сохранить';
+      }
+    }
   }

@@ -34,10 +34,6 @@ const api = new Api({
 
 const currentUserID = '98f0b3a604cd2bd64a8fb924';
 
-//лучше используйте Promise.all чтобы дождаться получения всех начальнх данных (данных пользователя и данных по карточкам), 
-//а потом вообще весь свой код перенесите в then, который придет после этого promise.all тогда у вас всем переменным 
-//внутри этого then, включая функции, будет доступна ссылка на данные полученные из апи
-
 const spinner = new Spinner(document.querySelector('.spinner'));
 
 const initialUserInfo = api.getUserInfo('users/me');
@@ -67,13 +63,9 @@ submitPopup.setEventListeners();
 function createCard(cardItem) {
   const card = new Card(cardItem, '.template_type_default', currentUserID, {
     handleCardClick: (cardItem) => {
-      console.log(cardItem);
-
       popupWithImage.open(cardItem);
     },
     handleLikePut: (cardItem) => {
-      console.log('вызван put');
-      console.log(cardItem);
 
       api.put('cards/likes', cardItem.id)
         .then(newCardData => {
@@ -82,8 +74,6 @@ function createCard(cardItem) {
         .catch(err => console.log(`Изменения статуса лайка: ${err}`));
     },
     handleLikeRemove: (cardItem) => {
-      console.log('вызван delete');
-
       api.delete('cards/likes', cardItem.id)
         .then(newCardData => {
           card.updateLikes(newCardData);
@@ -91,28 +81,17 @@ function createCard(cardItem) {
         .catch(err => console.log(`Изменения статуса лайка: ${err}`));
     },
     handleCardDelete: (cardItem) => {
-      console.log(`${cardItem.id} - cardItem.id`);
       submitPopup.setSubmitAction(() => {
-        console.log(cardItem.id);
 
         api.delete('cards', cardItem.id)
-          .then((res) => {
-            console.log(res);
-
+          .then(() => {
             card._handleCardRemove();
           })
           .catch(err => console.log(err));
-        //  сюда прописать действия которые необходимо выполнить после нажатия 
-        // на кнопку внутри попапа подтверждения
       })
       submitPopup.open();
-
-      // а тут открыть попап уже с установленным действием, то есть удалением текущей карточки
     }
   });
-
-  //переопределять выполняемую функцию надо только после нажатия на кнопку удаления 
-  //(перед непосредственным открытием попапа)
 
   const cardElement = card.generateCard();
 
@@ -123,37 +102,35 @@ cardsList.renderItems();
 
 const newCardPopup = new PopupWithForm('.modal_type_new-card', {
   handleFormSubmit: (formData) => {
+    newCardPopup.changeSaveCaption(true);
     api.addCard('cards', formData)
       .then((formData) => {
         cardRenderer(formData);
+      })
+      .finally(() => {
+        newCardPopup.changeSaveCaption(false);
       });
   }
 });
 
 const newAvatar = new PopupAvatarUpdate('.modal_type_avatar', {
-  handleFormSubmit: (formUrl) => {
-    spinner.renderLoading(true);
+  handleFormSubmit: (avatarUrl) => {
+    newAvatar.changeSaveCaption(true);
 
-    api.updateAvatar('users/me/avatar', formUrl) // url нового аватара
-      .then(() => {
-        document.querySelector('.profile__avatar').style.backgroundImage = `${formUrl}`; //перезагрузить страничку?
+    api.updateAvatar('users/me/avatar', avatarUrl) 
+      .then((data) => {
+        userInfo.setUserInfo(data); 
       })
       .finally(() => {
-        spinner.renderLoading(false);
+        newAvatar.changeSaveCaption(false);
       });
   }
 });
 
-// Перед зпросом не забудьте запустить прелодер, то есть как-то отобразить в интерфейсе что запрос ушел 
-// и в данный момент ожидается его ответ (в ТЗ тоже об этом сказано). 
-// После ответа сервера (если он ок), вам надо заменить картинку на фронте и отключить прелодер, а затем закрыть попап
-
-console.log(newAvatar);
-
 newAvatar.setEventListeners();
 document.querySelector('.profile__avatar').addEventListener('click', () => {
   newAvatar.open();
-})
+});
 
 const popupWithImage = new PopupWithImage('.modal_type_picture');
 
@@ -161,9 +138,14 @@ popupWithImage.setEventListeners();
 
 const userInfoPopup = new PopupWithForm('.modal_type_profile', {
   handleFormSubmit: (data) => {
+    userInfoPopup.changeSaveCaption(true);
+
     api.updateInfo('users/me', data)
       .then((data) => {
         userInfo.setUserInfo(data); //с помощью setUserInfo устанавливаем данные в разметку после сабмита формы
+      })
+      .finally(() => {
+        userInfoPopup.changeSaveCaption(false);
       });
   }
 });
@@ -192,12 +174,4 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 newAvatarValidator.enableValidation();
 
-// fetch('https://mesto.nomoreparties.co/v1/cohort-15/cards', {
-//   headers: {
-//   authorization: '4b693f44-f60e-4f4e-bfd2-2bb476e7515d'
-// }
-// })
-// .then(res => {res.json})
-// .then((data) => {
-//   debugger
-// });
+

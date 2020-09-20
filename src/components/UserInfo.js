@@ -12,7 +12,7 @@ export default class UserInfo {
   getUserInfo() {
     return {
       userName: this._nameElement.textContent, //берёт textContent из разметки
-      userInfo: this._infoElement.textContent
+      userInfo: this._infoElement.textContent,
     }
   }
 
@@ -29,5 +29,6 @@ export default class UserInfo {
   setUserInfo(data) {
     this._nameElement.textContent = data.name; // устанавливает textContent в разметку
     this._infoElement.textContent = data.about;
+    this._avatar.style.backgroundImage = `url(${data.avatar})`;
   }
 }

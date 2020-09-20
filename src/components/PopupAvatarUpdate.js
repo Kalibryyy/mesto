@@ -16,14 +16,15 @@ export default class PopupAvatarUpdate extends Popup {
       this._popupContainer.addEventListener('submit', (evt) => {
         evt.preventDefault();
         
-        console.log('вызван сабмит');
-        console.log(this._modalInput.value);
-        
         this._modalInputValue = this._modalInput.value;
-        this._handleFormSubmit(this._modalInputValue); // передать ему юрл?
+        this._handleFormSubmit(this._modalInputValue); 
 
         this.close();
       });
+    }
+
+    changeSaveCaption(isLoading) {
+      super.changeSaveCaption(isLoading);
     }
   
     open() {

@@ -25,12 +25,8 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    // console.log(`${this._currentUserID}`);
-    console.log(this._cardOwner); // это id карточки, нужно person._id - ownerid лежит в карточке (item.owner.id)
 
     if (`${this._currentUserID}` === this._cardOwner) {
-      console.log('моя'); // не работает
-
       this._element.querySelector('.elements__basket').classList.add('elements__basket_visible');
     }
     this._setEventListeners();
@@ -51,7 +47,6 @@ export default class Card {
 
   updateLikes(newCardData) {
     this._likes = newCardData.likes;
-    // console.log(this._likes); // массив лайков по кликнутой карточке
 
     this._renderLikesNumber();
 
@@ -61,12 +56,9 @@ export default class Card {
     this._renderLikeButton(isLiked);
   }
 
-  //вы можете в updateLikes менять свойство this._likes и потом после этого вызывать внутри 
-  //renderLikesNumber без аргумента и обращаться опять там внутри к this._likes
-
   _renderLikeButton(isLiked) {
     if (isLiked) {
-      this._element.querySelector('.elements__like').classList.add('elements__like_active'); //вынести в конструктор
+      this._element.querySelector('.elements__like').classList.add('elements__like_active'); 
     } else {
       this._element.querySelector('.elements__like').classList.remove('elements__like_active');
     }

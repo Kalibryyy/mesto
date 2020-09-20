@@ -64,21 +64,6 @@ export default class Api {
         .catch(this.showError);
     }
 
-//   api.delete('cards', cardItem.id)
-//   .then((res) => {
-//     console.log(res);
-    
-//     card._handleCardRemove();
-//   })
-//   .catch(err => console.log(err));
-
-//   fetch('https://mesto.nomoreparties.co/v1/cohort-15/cards/5f6739ec82b7ae00116466bf', {
-//     method: "DELETE",
-//     headers: {
-//     authorization: '4b693f44-f60e-4f4e-bfd2-2bb476e7515d'
-//     }
-//   })
-
   addCard(path, formData) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-15/${path}`, {
         method: "POST",
@@ -100,41 +85,4 @@ export default class Api {
     return console.log(err);
   }
 }
-
-// getInitialCards() {
-//     fetch('https://mesto.nomoreparties.co/v1/cohort-15/cards', {
-//     headers: {
-//     authorization: '4b693f44-f60e-4f4e-bfd2-2bb476e7515d'
-//   }
-// })
-// .then(res => res.json())
-// .then((result) => {
-//   console.log(result);
-// });
-
-// getInitialCards() {
-//   return fetch('https://mesto.nomoreparties.co/v1/cohort-15/cards', {
-//     headers: {
-//       authorization: '4b693f44-f60e-4f4e-bfd2-2bb476e7515d'
-//     }
-//   })
-//     .then(res => {
-//       if (res.ok) {
-//         return res.json();
-//       }
-//     });
-// }
-
-// fetch('https://mesto.nomoreparties.co/v1/cohort-15/users/me', {
-//     method: "PATCH",
-//     headers: {
-//         authorization: '4b693f44-f60e-4f4e-bfd2-2bb476e7515d',
-//         'Content-Type': 'application/json'
-//       },
-//     body: JSON.stringify({
-//       name: 'да всё что угодно только иди на сервер',
-//       about: 'уходи говорю'
-//     })
-//   })
-
 

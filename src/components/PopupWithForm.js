@@ -34,6 +34,10 @@ export default class PopupWithForm extends Popup {
         this.close();
       });
     }
+
+    changeSaveCaption(isLoading) {
+      super.changeSaveCaption(isLoading);
+    }
   
     open() {
       super.open();
