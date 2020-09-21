@@ -33,13 +33,13 @@ const api = new Api({
   }
 });
 
-const currentUserID = '98f0b3a604cd2bd64a8fb924';
-
 const spinner = new Spinner(document.querySelector('.spinner'));
 
 api.getAllData('users/me', 'cards')
   .then((values) => {
     const [userData, cardsArray] = values;
+    console.log(userData);
+    
 
     userInfo.setUserInfo(userData);
 
@@ -55,7 +55,7 @@ api.getAllData('users/me', 'cards')
     }
 
     function createCard(cardItem) {
-      const card = new Card(cardItem, '.template_type_default', currentUserID, {
+      const card = new Card(cardItem, '.template_type_default', userData._id, {
         handleCardClick: (cardItem) => {
           popupWithImage.open(cardItem);
         },
