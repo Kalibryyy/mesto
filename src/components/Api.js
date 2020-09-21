@@ -20,7 +20,7 @@ export default class Api {
       .catch(this.showError);
   }
 
-  getAllData(userDataPath, cardsDataPath) {
+  getAppInfo(userDataPath, cardsDataPath) {
     return Promise.all([this._getUserInfo(userDataPath), this._getInitialCards(cardsDataPath)])
   }
 

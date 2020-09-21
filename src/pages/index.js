@@ -35,12 +35,11 @@ const api = new Api({
 
 const spinner = new Spinner(document.querySelector('.spinner'));
 
-api.getAllData('users/me', 'cards')
+api.getAppInfo('users/me', 'cards')
   .then((values) => {
     const [userData, cardsArray] = values;
     console.log(userData);
     
-
     userInfo.setUserInfo(userData);
 
     const cardsList = new Section({
