@@ -1,11 +1,10 @@
 export default class Section {
   constructor({
     renderer
-  }, containerSelector, initialArray, spinner) {
+  }, containerSelector, initialArray) {
     this._initialArray = initialArray;
     this._container = document.querySelector(containerSelector);
     this._renderer = renderer;
-    this.spinner = spinner;
   }
 
   renderItems () { 

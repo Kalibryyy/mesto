@@ -47,7 +47,7 @@ api.getAllData('users/me', 'cards')
       renderer: (cardItem) => {
         cardRenderer(cardItem);
       }
-    }, elementsList, cardsArray, spinner);
+    }, elementsList, cardsArray);
 
     function cardRenderer(item) {
       spinner.renderLoading(true);
