@@ -15,8 +15,4 @@ export default class PopupWithImage extends Popup {
       openImage.alt = cardData.name;
       pictureText.textContent = cardData.name;
     }
-  
-    close() {
-      super.close();
-    }
   }

@@ -37,7 +37,7 @@ const spinner = new Spinner(document.querySelector('.spinner'));
 api.getAppInfo('users/me', 'cards')
   .then((values) => {
     const [userData, cardsArray] = values;
-    
+
     userInfo.setUserInfo(userData);
 
     const cardsList = new Section({
@@ -73,11 +73,11 @@ api.getAppInfo('users/me', 'cards')
         },
         handleCardDelete: (cardItem) => {
           submitPopup.setSubmitAction(() => {
-
             api.delete('cards', cardItem.id)
               .then(() => {
                 card.handleCardRemove();
               })
+              .then(() => submitPopup.close())
               .catch(err => console.log(err));
           })
           submitPopup.open();
@@ -98,13 +98,14 @@ api.getAppInfo('users/me', 'cards')
           .then((formData) => {
             cardRenderer(formData);
           })
+          .then(() => newCardPopup.close())
           .catch(err => console.log(err))
           .finally(() => {
             newCardPopup.changeSaveCaption(false);
           });
       }
     });
-    
+
     newCardPopup.setEventListeners();
     addButton.addEventListener('click', () => {
       newCardPopup.open();
@@ -129,6 +130,7 @@ const userInfoPopup = new PopupWithForm('.modal_type_profile', {
       .then((data) => {
         userInfo.setUserInfo(data); //с помощью setUserInfo устанавливаем данные в разметку после сабмита формы
       })
+      .then(() => newCardPopup.close())
       .catch(err => console.log(err))
       .finally(() => {
         userInfoPopup.changeSaveCaption(false);
@@ -139,13 +141,14 @@ const userInfoPopup = new PopupWithForm('.modal_type_profile', {
 userInfoPopup.setEventListeners();
 
 const newAvatar = new PopupWithForm('.modal_type_avatar', {
-  handleFormSubmit: (avatarUrl) => { 
+  handleFormSubmit: (avatarUrl) => {
     newAvatar.changeSaveCaption(true);
 
     api.updateAvatar('users/me/avatar', avatarUrl.link)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
+      .then(() => newCardPopup.close())
       .catch(err => console.log(err))
       .finally(() => {
         newAvatar.changeSaveCaption(false);
@@ -165,7 +168,7 @@ popupWithImage.setEventListeners();
 
 updateAvatarButton.addEventListener('click', () => {
   newAvatar.open();
-}); 
+});
 
 editButton.addEventListener('click', () => {
   const currentUserInfo = userInfo.getUserInfo(); // с помощью getUserInfo берём данные из разметки перед открытием попапа с данными пользователя

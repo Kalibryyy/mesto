@@ -18,8 +18,14 @@ export default class UserInfo {
 
   //принимает новые данные пользователя и добавляет их на страницу
   setUserInfo(data) {
-    this._nameElement.textContent = data.name; // устанавливает textContent в разметку
-    this._infoElement.textContent = data.about;
-    this._avatar.style.backgroundImage = `url(${data.avatar})`;
+    if (data.name) {
+      this._nameElement.textContent = data.name;
+    };
+    if (data.about) {
+      this._infoElement.textContent = data.about;
+    };
+    if (data.avatar) {
+      this._avatar.style.backgroundImage = `url(${data.avatar})`;
+    }
   }
 }

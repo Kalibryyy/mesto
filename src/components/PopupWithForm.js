@@ -31,16 +31,15 @@ export default class PopupWithForm extends Popup {
         evt.preventDefault();
   
         this._handleFormSubmit(this._getInputValues());
-        this.close();
       });
     }
 
     changeSaveCaption(isLoading) {
-      super.changeSaveCaption(isLoading);
-    }
-  
-    open() {
-      super.open();
+      if (isLoading) {
+        this._popup.querySelector('.modal__btn').textContent = 'Сохранение...';
+      } else {
+        this._popup.querySelector('.modal__btn').textContent = 'Сохранить';
+      }
     }
   
     close() {

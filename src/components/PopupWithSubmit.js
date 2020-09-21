@@ -17,16 +17,7 @@ export default class PopupWithSubmit extends Popup {
       evt.preventDefault();
       
       this._handleSubmitCallback();
-      this.close();
     });
-  }
-
-  open() {
-    super.open();
-  }
-
-  close() {
-    super.close();
   }
 }
 
