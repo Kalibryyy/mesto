@@ -79,7 +79,7 @@ api.getAllData('users/me', 'cards')
 
             api.delete('cards', cardItem.id)
               .then(() => {
-                card._handleCardRemove();
+                card.handleCardRemove();
               })
               .catch(err => console.log(err));
           })

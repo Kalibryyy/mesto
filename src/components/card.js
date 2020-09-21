@@ -64,7 +64,7 @@ export default class Card {
     }
   }
 
-  _handleCardRemove() {
+  handleCardRemove() {
     this._element.querySelector('.elements__basket').closest('.elements__item').remove();
   }
 
