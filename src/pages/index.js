@@ -43,8 +43,9 @@ api.getAppInfo('users/me', 'cards')
     const cardsList = new Section({
       renderer: (cardItem) => {
         cardRenderer(cardItem);
-      }
-    }, elementsList, cardsArray);
+      },
+      initialArray: cardsArray.reverse()
+    }, elementsList);
 
     function cardRenderer(item) {
       spinner.renderLoading(true);
