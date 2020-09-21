@@ -37,7 +37,6 @@ const spinner = new Spinner(document.querySelector('.spinner'));
 api.getAppInfo('users/me', 'cards')
   .then((values) => {
     const [userData, cardsArray] = values;
-    console.log(userData);
     
     userInfo.setUserInfo(userData);
 
