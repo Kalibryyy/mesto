@@ -69,7 +69,7 @@ export default class Api {
     }
 
   addCard(path, formData) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-15/${path}`, {
+    return fetch(`${this._url}${path}`, {
         method: "POST",
         headers: this.headers,
         body: JSON.stringify({
