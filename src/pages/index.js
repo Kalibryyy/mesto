@@ -7,7 +7,6 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import Spinner from '../components/Spinner.js';
 import PopupWithSubmit from '../components/PopupWithSubmit.js';
-import PopupAvatarUpdate from '../components/PopupAvatarUpdate.js';
 
 import {
   object,
@@ -140,11 +139,11 @@ const userInfoPopup = new PopupWithForm('.modal_type_profile', {
 
 userInfoPopup.setEventListeners();
 
-const newAvatar = new PopupAvatarUpdate('.modal_type_avatar', {
-  handleFormSubmit: (avatarUrl) => {
+const newAvatar = new PopupWithForm('.modal_type_avatar', {
+  handleFormSubmit: (avatarUrl) => { 
     newAvatar.changeSaveCaption(true);
 
-    api.updateAvatar('users/me/avatar', avatarUrl)
+    api.updateAvatar('users/me/avatar', avatarUrl.link)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
