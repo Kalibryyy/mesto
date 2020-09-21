@@ -25,7 +25,7 @@ export default class Popup {
     }
   
     _handleOverlayClose() {
-      this.close();
+      this.close();     
     }
   
     //добавляет слушатель клика иконке закрытия попапа
