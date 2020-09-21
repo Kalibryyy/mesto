@@ -124,7 +124,6 @@ const userInfo = new UserInfo({
   infoElement: '.profile__occupation'
 });
 
-
 const userInfoPopup = new PopupWithForm('.modal_type_profile', {
   handleFormSubmit: (data) => {
     userInfoPopup.changeSaveCaption(true);

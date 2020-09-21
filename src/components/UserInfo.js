@@ -16,16 +16,6 @@ export default class UserInfo {
     }
   }
 
-  //удалить
-  setInitialUserInfo(initialUserInfo) {
-    initialUserInfo
-      .then(user => {
-        this._nameElement.textContent = user.name; // устанавливает textContent в разметку
-        this._infoElement.textContent = user.about;
-        this._avatar.style.backgroundImage = `url(${user.avatar})`;
-      });
-  }
-
   //принимает новые данные пользователя и добавляет их на страницу
   setUserInfo(data) {
     this._nameElement.textContent = data.name; // устанавливает textContent в разметку
