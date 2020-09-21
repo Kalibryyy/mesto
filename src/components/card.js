@@ -5,6 +5,7 @@ export default class Card {
     handleLikeRemove,
     handleCardDelete
   }) {
+    this._data = data;
     this._text = data.name;
     this._image = data.link;
     this._likes = data.likes;
@@ -35,7 +36,7 @@ export default class Card {
     elementsImage.alt = this._text;
     this._element.querySelector('.elements__text').textContent = this._text;
     
-    this._renderLikesNumber();
+    this.updateLikes(this._data);
 
     return this._element;
   }

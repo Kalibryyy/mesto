@@ -93,7 +93,7 @@ api.getAppInfo('users/me', 'cards')
 
     const newCardPopup = new PopupWithForm('.modal_type_new-card', {
       handleFormSubmit: (formData) => {
-        newCardPopup.changeSaveCaption(true);
+        newCardPopup.changeSaveCaption('Сохранение...');
         api.addCard('cards', formData)
           .then((formData) => {
             cardRenderer(formData);
@@ -101,7 +101,7 @@ api.getAppInfo('users/me', 'cards')
           .then(() => newCardPopup.close())
           .catch(err => console.log(err))
           .finally(() => {
-            newCardPopup.changeSaveCaption(false);
+            newCardPopup.changeSaveCaption('Сохранить');
           });
       }
     });
@@ -124,16 +124,16 @@ const userInfo = new UserInfo({
 
 const userInfoPopup = new PopupWithForm('.modal_type_profile', {
   handleFormSubmit: (data) => {
-    userInfoPopup.changeSaveCaption(true);
+    userInfoPopup.changeSaveCaption('Сохранение...');
 
     api.updateInfo('users/me', data)
       .then((data) => {
         userInfo.setUserInfo(data); //с помощью setUserInfo устанавливаем данные в разметку после сабмита формы
       })
-      .then(() => newCardPopup.close())
+      .then(() => userInfoPopup.close())
       .catch(err => console.log(err))
       .finally(() => {
-        userInfoPopup.changeSaveCaption(false);
+        userInfoPopup.changeSaveCaption('Сохранить');
       });
   }
 });
@@ -142,16 +142,16 @@ userInfoPopup.setEventListeners();
 
 const newAvatar = new PopupWithForm('.modal_type_avatar', {
   handleFormSubmit: (avatarUrl) => {
-    newAvatar.changeSaveCaption(true);
+    newAvatar.changeSaveCaption('Сохранение...');
 
     api.updateAvatar('users/me/avatar', avatarUrl.link)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
-      .then(() => newCardPopup.close())
+      .then(() => newAvatar.close())
       .catch(err => console.log(err))
       .finally(() => {
-        newAvatar.changeSaveCaption(false);
+        newAvatar.changeSaveCaption('Сохранить');
       });
   }
 });
