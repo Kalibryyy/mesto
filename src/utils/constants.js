@@ -2,6 +2,7 @@ export {
   object,
   editButton,
   addButton,
+  updateAvatarButton,
   modalProfile,
   modalNewCard,
   modalPicture,
@@ -38,6 +39,7 @@ const object = {
 
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
+const updateAvatarButton = document.querySelector('.profile__avatar');
 
 const modalProfile = document.querySelector('.modal_type_profile');
 const modalNewCard = document.querySelector('.modal_type_new-card');

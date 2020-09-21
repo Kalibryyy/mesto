@@ -4,7 +4,7 @@ export default class Api {
     this.headers = options.headers;
   }
 
-  getInitialCards(path) {
+  _getInitialCards(path) {
     return fetch(`${this._url}${path}`, {
         headers: this.headers
       })
@@ -12,12 +12,16 @@ export default class Api {
       .catch(this.showError);
   }
 
-  getUserInfo(path) {
+  _getUserInfo(path) {
     return fetch(`${this._url}${path}`, {
         headers: this.headers
       })
       .then(this.checkStatus)
       .catch(this.showError);
+  }
+
+  getAllData(userDataPath, cardsDataPath) {
+    return Promise.all([this._getUserInfo(userDataPath), this._getInitialCards(cardsDataPath)])
   }
 
   updateInfo(path, data) {

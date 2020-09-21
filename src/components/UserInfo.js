@@ -16,6 +16,7 @@ export default class UserInfo {
     }
   }
 
+  //удалить
   setInitialUserInfo(initialUserInfo) {
     initialUserInfo
       .then(user => {

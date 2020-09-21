@@ -8,23 +8,13 @@ export default class Section {
     this.spinner = spinner;
   }
 
-  renderItems() {
-    this.spinner.renderLoading(true);
-    
-    this._initialArray
-      .then((data) => {
-        data.forEach(item => {
-          this._renderer(item);
-        });
-      })
-      .finally(() => {
-        this.spinner.renderLoading(false);
-      });
-  }
+  renderItems () { 
+    this._initialArray.forEach(item => { 
+      this._renderer(item); 
+    }); 
+  } 
 
   addItem(element) {
     this._container.prepend(element);
   }
 }
-
-
