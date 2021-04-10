@@ -9,7 +9,6 @@ export default class Api {
         headers: this.headers
       })
       .then(this.checkStatus)
-      .catch(this.showError);
   }
 
   _getUserInfo(path) {
@@ -17,7 +16,6 @@ export default class Api {
         headers: this.headers
       })
       .then(this.checkStatus)
-      .catch(this.showError);
   }
 
   getAppInfo(userDataPath, cardsDataPath) {
@@ -34,7 +32,6 @@ export default class Api {
         })
       })
       .then(this.checkStatus)
-      .catch(this.showError);
   }
 
   put(path, id) {
@@ -43,7 +40,6 @@ export default class Api {
         headers: this.headers
       })
       .then(this.checkStatus)
-      .catch(this.showError);
   }
 
   delete(path, id) {
@@ -53,7 +49,6 @@ export default class Api {
     })
       .then(this.checkStatus)
       .then(res => res)
-      .catch(this.showError);
   }
 
     updateAvatar(path, url) {
@@ -65,7 +60,6 @@ export default class Api {
         })
       })
         .then(this.checkStatus)
-        .catch(this.showError);
     }
 
   addCard(path, formData) {
@@ -78,15 +72,10 @@ export default class Api {
         })
       })
       .then(this.checkStatus)
-      .catch(this.showError);
   }
 
   checkStatus(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-  }
-
-  showError(err) {
-    return console.log(err);
   }
 }
 
